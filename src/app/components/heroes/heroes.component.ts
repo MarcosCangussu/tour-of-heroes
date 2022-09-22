@@ -8,12 +8,7 @@ import { Heroes } from 'src/app/mock-heroes';
   styleUrls: ['./heroes.component.scss'],
 })
 export class HeroesComponent {
-  hero: Hero = {
-    id: 1,
-    name: 'Magneto',
-  };
   heroes = Heroes;
-
   selectedHero?: Hero;
 
   onSelect(hero: Hero): void {
