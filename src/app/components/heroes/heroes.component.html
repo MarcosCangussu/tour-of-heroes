@@ -1,14 +1,32 @@
+<h2>My Heroes</h2>
 
-<h2>{{hero.name | uppercase }}</h2>
-<div><span>id: </span>{{hero.id}}</div>
-<div><span>name: </span>{{hero.name}}</div>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes"
+   (click)="onSelect(hero)"
+   [class.selected] = "hero === selectedHero"
+   >
+    <span>{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+  <h2>{{selectedHero.name | uppercase }}</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div><span>name: </span>{{selectedHero.name}}</div>
 
 
-<div>
-  <label for="name">Hero name:</label>
-  <input id="name" [(ngModel)]="hero.name" placeholder="name" type="text">
+  <div>
+    <label for="name">Hero name:</label>
+    <input id="name" [(ngModel)]="selectedHero.name" placeholder="name" type="text">
+  </div>
 </div>
 
+<!-- [class.selected] = "hero === selectedHero": css condicional -->
+
+<!-- NgIf é uma diretiva Angular que permite alterar a página a partir de uma declaração condicional. -->
+
+<!-- Ngfor é uma diretiva Angular que permite percorrer um array, ou qualquer objeto iterável, e exibir cada item do array como elemento na tela.  -->
 
 <!--two way data bind [(ngModel)]: se mudar algo no component reflete no template e vice-versa-->
+
 <!-- pipe: mudar algum dado de apresentação, Ex: uppercase -->
