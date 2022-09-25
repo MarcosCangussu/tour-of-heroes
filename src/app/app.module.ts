@@ -8,20 +8,25 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CoreModule } from './core/core.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroDetailComponent
+    HeroDetailComponent,
+    DashboardComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
-    MatToolbarModule
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
