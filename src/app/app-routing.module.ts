@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
-import { HeroesComponent } from './components/heroes/heroes.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'heroes', component: HeroesComponent },
-  { path: 'heroes/:id', component: HeroDetailComponent },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./components/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
+    path: 'heroes',
+    loadChildren: () =>
+      import('./components/heroes/heroes.module').then((m) => m.HeroesModule),
+  },
 ];
 
 @NgModule({
@@ -16,3 +22,6 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+
+
+//Lazy-loading trata-se de um padrão onde o carregamento de módulos ocorre sob demanda, ou seja, apenas quando solicitado e não necessariamente no primeiro acesso.
