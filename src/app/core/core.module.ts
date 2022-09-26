@@ -5,9 +5,10 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
+import { PageNotFoundComponent } from './components/page-not-found.component';
 
-const Components = [MessagesComponent, ToolbarComponent];
-const Modules = [FlexLayoutModule, MaterialModule, RouterModule]
+const Components = [MessagesComponent, ToolbarComponent, PageNotFoundComponent];
+const Modules = [FlexLayoutModule, MaterialModule, RouterModule];
 
 @NgModule({
   declarations: [Components],
@@ -17,7 +18,9 @@ const Modules = [FlexLayoutModule, MaterialModule, RouterModule]
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule?: CoreModule) {
     if (parentModule) {
-      throw new Error('coreModule has already been loaded. Import this module in the appModule');
+      throw new Error(
+        'coreModule has already been loaded. Import this module in the appModule'
+      );
     }
   }
 }

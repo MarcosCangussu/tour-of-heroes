@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeroDetailComponent } from '../heroes/components/hero-detail/hero-detail.component';
+import { DashboardComponent } from './dashboard.component';
 
-const routes: Routes = [
-  { path: 'heroes/:id', component: HeroDetailComponent },
-];
+const routes: Routes = [{ path: '', component: DashboardComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
