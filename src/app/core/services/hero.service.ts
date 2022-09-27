@@ -1,28 +1,44 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Hero } from '../models/hero.model';
 import { Heroes } from '../services/mock-heroes';
 import { MessagesService } from './messages.service';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HeroService {
+  private heroesUrl = `${environment.baseUrl}/heroes`;
 
-  constructor(private messagesService: MessagesService) { }
+  constructor(
+    private http: HttpClient,
+    private messagesService: MessagesService
+  ) {}
 
-  getHeroes(): Observable <Hero[]> {
-    const heroes = of(Heroes);
-    this.messagesService.add('HeroService: fetched heroes');
-    return heroes;
+  //GET /heroes
+  getHeroes(): Observable<Hero[]> {
+    return this.http
+      .get<Hero[]>(this.heroesUrl)
+      .pipe(tap((heroes) => this.log(`fetched ${heroes.length} heroes`)));
   }
 
+  //GET /heroes/id
   getHero(id: number): Observable<Hero> {
-    const hero = Heroes.find(hero => hero.id === id)!;
-    this.messagesService.add(`HeroService: fetched hero id=${id}`);
-    return of(hero);
+    return this.http
+      .get<Hero>(`${this.heroesUrl}/${id}`)
+      .pipe(tap((hero) => this.log(`fetched hero id=${id} and ${hero.name}`)));
+  }
+
+  private log(message: string): void {
+    this.messagesService.add(`HeroService: ${message}`);
   }
 }
+
+// GET: obter dados
+// POST: criar dados
+// PUT/PATCH: atualizar dados
+// DELETE: excluir dados
 
 // Observable emite notificações sempre que ocorre uma mudança em um de seus itens e a partir disto podemos executar uma ação.
