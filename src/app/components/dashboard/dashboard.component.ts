@@ -12,12 +12,12 @@ heroes: Hero[] = [];
   constructor(private heroService: HeroService) { }
 
   ngOnInit(): void {
-    this.getHeroes();
+    this.getAll();
   }
 
 
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes =>
+  getAll(): void {
+    this.heroService.getAll().subscribe(heroes =>
       this.heroes = heroes.slice(1, 5))
 }
 
