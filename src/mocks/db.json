@@ -2,27 +2,35 @@
   "heroes": [
     {
       "id": 1,
-      "name": "Old Logan"
+      "name": "logan"
     },
     {
       "id": 2,
       "name": "Hulk"
     },
     {
-      "id": 3,
+      "id": 4,
       "name": "Ironman"
     },
     {
-      "id": 3,
+      "id": 5,
       "name": "Jean Grey"
     },
     {
-      "id": 5,
+      "id": 6,
       "name": "Thor"
     },
     {
-      "id": 1,
+      "id": 7,
       "name": "Magneto"
+    },
+    {
+      "name": "X-23",
+      "id": 8
+    },
+    {
+      "name": "Loki",
+      "id": 9
     }
   ]
 }

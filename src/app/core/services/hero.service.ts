@@ -28,13 +28,29 @@ export class HeroService {
   getOne(id: number): Observable<Hero> {
     return this.http
       .get<Hero>(`${this.heroesUrl}/${id}`)
-      .pipe(tap((hero) => this.log(`fetched hero id=${id} and ${hero.name}`)));
+      .pipe(tap((hero) => this.log(`fetched ${this.descAttributes(hero)}}`)));
+  }
+  // POST /heroes
+
+  create(hero: Hero): Observable<Hero> {
+    return this.http
+      .post<Hero>(this.heroesUrl, hero)
+      .pipe(
+        tap((hero) => this.log(`crated ${this.descAttributes(hero)}`))
+      );
   }
 
   //PUT /heroes/id
   update(hero: Hero): Observable<Hero> {
-    return this.http.put<Hero>(`${this.heroesUrl}/${hero.id}`, hero).pipe(
-      tap((hero) => this.log(`updated hero id=${hero.id} and ${hero.name}`)));
+    return this.http
+      .put<Hero>(`${this.heroesUrl}/${hero.id}`, hero)
+      .pipe(
+        tap((hero) => this.log(`updated ${this.descAttributes(hero)}`))
+      );
+  }
+
+  private descAttributes(hero: Hero): string {
+    return `hero id=${hero.id} and ${hero.name}`;
   }
 
   private log(message: string): void {
