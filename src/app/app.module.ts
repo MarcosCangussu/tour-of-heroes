@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -13,7 +12,6 @@ import { CoreModule } from './core/core.module';
   declarations: [AppComponent],
   imports: [
     // @angular
-    FormsModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,

@@ -29,8 +29,12 @@
       "id": 8
     },
     {
-      "name": "Loki",
-      "id": 9
+      "id": 9,
+      "name": "Loki"
+    },
+    {
+      "name": "Lince Negra",
+      "id": 10
     }
   ]
 }
